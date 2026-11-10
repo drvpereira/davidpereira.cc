@@ -10,6 +10,9 @@
   "workers_dev": false,
   // ...but keep preview URLs for non-main branches.
   "preview_urls": true,
+  // Required by `wrangler preview`, which Workers Builds runs for non-main branches.
+  // Empty = previews use the top-level settings; it has no effect on production.
+  "previews": {},
   "assets": {
     "directory": "./public",
     // Serve /lagosta (the QR code URL) directly with 200; /lagosta/ redirects to it.
