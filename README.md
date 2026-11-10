@@ -57,8 +57,19 @@ setting, which a plain static file server doesn't.
 
 ## Deploy
 
-Push to `main`. Cloudflare Workers Builds deploys it in about a minute. Other branches
-get preview URLs.
+Push to `main`. Cloudflare Workers Builds deploys it in about a minute (GitHub shows a
+"Workers Builds" check on the commit).
+
+Any other branch gets a preview instead, at:
+
+```
+https://<branch-name>-davidpereira-cc.p65kt8j49g.workers.dev
+```
+
+The address isn't shown in the GitHub check, so build it from the branch name. Previews
+need the empty `"previews": {}` block in `wrangler.jsonc`: don't remove it. For bigger
+changes, work on a branch, check the preview on a phone, then merge to `main` and
+delete the branch.
 
 ## Common changes
 
