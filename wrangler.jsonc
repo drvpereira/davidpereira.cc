@@ -1,7 +1,15 @@
 // Cloudflare Workers config. Static files only: there is no Worker script.
+// This file is the source of truth. Prefer changing settings here over the dashboard.
 {
   "name": "davidpereira-cc",
   "compatibility_date": "2026-11-10",
+  // The site lives only on the custom domain. www.davidpereira.cc is NOT attached here:
+  // a zone Redirect Rule sends it to davidpereira.cc (see README).
+  "routes": [{ "pattern": "davidpereira.cc", "custom_domain": true }],
+  // No public *.workers.dev copy of the site...
+  "workers_dev": false,
+  // ...but keep preview URLs for non-main branches.
+  "preview_urls": true,
   "assets": {
     "directory": "./public",
     // Serve /lagosta (the QR code URL) directly with 200; /lagosta/ redirects to it.

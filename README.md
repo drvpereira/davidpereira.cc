@@ -33,6 +33,17 @@ public/                  everything served by the site
 wrangler.jsonc           Cloudflare config (static assets only, no Worker script)
 ```
 
+## Domain setup (Cloudflare)
+
+- `davidpereira.cc` is attached to the Worker as a custom domain, declared in `wrangler.jsonc`.
+- `www.davidpereira.cc` is **not** attached to the Worker. A placeholder DNS record
+  (`A www 192.0.2.1`, proxied) and a zone *Redirect Rule* send it to
+  `https://davidpereira.cc` with a 301, keeping the path and query.
+- *Always Use HTTPS* is on. DNSSEC is on.
+- The domain sends no email: `MX 0 .`, SPF `v=spf1 -all`, DMARC `p=reject`.
+- There's no public `*.workers.dev` copy (`workers_dev: false`). Preview URLs for
+  branches stay on (`preview_urls: true`).
+
 ## Run locally
 
 Requires Node.js. Nothing gets installed into the project.
